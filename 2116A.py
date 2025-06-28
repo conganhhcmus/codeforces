@@ -1,7 +1,9 @@
+# Import
 import sys
 
 # Fast I/O
 input = sys.stdin.readline
+INF = 10**18
 
 
 # Input Parsing Helpers
@@ -27,18 +29,17 @@ def read_strs():
 
 # Main problem-solving function
 def solve():
-    str1, str2 = read_str().lower(), read_str().lower()
-    if str1 == str2:
-        print(0)
-    elif str1 > str2:
-        print(1)
+    # Your solution logic here
+    a, b, c, d = read_ints()
+    p1 = min(a, c)
+    p2 = min(b, d)
+    if p1 >= p2:
+        print("Gellyfish")
     else:
-        print(-1)
+        print("Flower")
 
 
 # Entry point
 if __name__ == "__main__":
-    # For multiple test cases
-    # num_test_cases = read_int()
-    # for _ in range(num_test_cases):
-    solve()
+    for _ in range(read_int()):
+        solve()
