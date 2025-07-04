@@ -1,5 +1,6 @@
 {
     "python.analysis.autoImportCompletions": true,
+    "cph.language.python.SubmissionCompiler": "Python 3.13.2",
     "[python]": {
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "charliermarsh.ruff",

@@ -3,7 +3,6 @@ import sys
 # Fast I/O
 input = sys.stdin.readline
 
-
 # Recursion Limit
 sys.setrecursionlimit(10**6)
 
@@ -33,20 +32,28 @@ def YN(a):
 INF = 10**18
 
 
+def dfs(u, p, val, adj, a):
+    min_val = min(a[u - 1], a[u - 1] - val[1])
+    max_val = max(a[u - 1], a[u - 1] - val[0])
+    a[u - 1] = max_val
+    for v in adj[u]:
+        if p != v:
+            dfs(v, u, [min_val, max_val], adj, a)
+
+
 # Main function
 def solve():
-    n, a, b = read_int(), read_ints(), read_ints()
+    n = read_int()
+    a = read_ints()
+    adj = [[] for _ in range(n + 1)]
+    for _ in range(n - 1):
+        u, v = read_ints()
+        adj[u].append(v)
+        adj[v].append(u)
 
-    seen = [False] * (n + 1)
-    if a[-1] == b[-1]:
-        return print(n)
-    ans = -1
-    for i in reversed(range(n - 1)):
-        if a[i] == b[i] or a[i] == a[i + 1] or b[i] == b[i + 1] or seen[a[i]] or seen[b[i]]:
-            ans = i
-            break
-        seen[a[i + 1]] = seen[b[i + 1]] = True
-    print(ans + 1)
+    dfs(1, -1, [0, 0], adj, a)
+
+    print(*a)
 
 
 # Entry point
