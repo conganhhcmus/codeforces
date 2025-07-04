@@ -36,6 +36,7 @@
 			"",
 			"# Constants",
 			"INF = 10**18",
+			"MOD = 10**9 + 7",
 			"",
 			"# Main function",
 			"def solve():",
