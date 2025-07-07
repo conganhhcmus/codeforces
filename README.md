@@ -17,7 +17,7 @@ This repository contains my solutions to various Codeforces problems and contest
 
 ## 🏆 Problem Solutions
 
-**Total Problems Solved:** 19
+**Total Problems Solved:** 20
 
 <details>
 <summary>Click to expand</summary>
