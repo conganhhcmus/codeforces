@@ -38,21 +38,18 @@ MOD = 10**9 + 7
 # Main function
 def solve():
     n, k, d = read_ints()
+    dp = [[0] * 2 for _ in range(n + 1)]
+    dp[0][0] = 1
+    for i in range(1, n + 1, 1):
+        for j in range(1, k + 1, 1):
+            if i >= j:
+                if j >= d:
+                    dp[i][1] += dp[i - j][0] + dp[i - j][1]
+                else:
+                    dp[i][0] += dp[i - j][0]
+                    dp[i][1] += dp[i - j][1]
 
-    @lru_cache(maxsize=None)
-    def dp(remain, state):
-        if remain < 0:
-            return 0
-        if remain == 0:
-            return state
-        ans = 0
-        for i in range(1, k + 1, 1):
-            newState = 1 if (state == 1 or i >= d) else 0
-            ans += dp(remain - i, newState)
-
-        return ans % MOD
-
-    print(dp(n, 0))
+    print(dp[n][1] % MOD)
 
 
 # Entry point
